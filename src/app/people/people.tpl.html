@@ -3,8 +3,8 @@
 
   <article class="person col-xs-2" ng-repeat="person in people.list">
       <img ng-src="{{person.thumbnail}}" />
-      <h4>{{ person.firstName }} {{ person.lastName }}</h4>
-      <span class="label label-info">{{ person.party }}</span>
+      <h4>{{ person.firstName }} {{ person.lastName }} <small class="label label-info">{{ person.party }}</small>
+      </h4>
       <p> {{ person.status }} </p>
   </article>
 
