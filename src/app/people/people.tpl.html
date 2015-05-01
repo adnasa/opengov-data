@@ -1,7 +1,16 @@
 <div class="row">
   <h1 class="page-header">The Elevator Pitch<small>For the lazy and impatient.</small></h1>
 
+  <form name="httpForm" ng-submit="people.reload(people.filter)">
+      <input type="text" name="firstName" ng-model="people.filter.fnamn"/>
+      <button type="submit">Hitta</button>
+  </form>
 
-
+  <article class="person col-xs-2" ng-repeat="person in people.list">
+      <img ng-src="{{person.thumbnail}}" />
+      <h4>{{ person.firstName }} {{ person.lastName }} <small class="label label-info">{{ person.party }}</small>
+      </h4>
+      <p> {{ person.status }} </p>
+  </article>
 </div>
 
