@@ -36,7 +36,8 @@ angular.module( 'ngBoilerplate.people', [
                         lastName: person.efternamn,
                         sex: person.kon,
                         status: person.status,
-                        thumbnail: person.bild_url_80
+                        thumbnail: person.bild_url_80,
+                        party: person.parti
                     };
 
                     people.push(personObj);
@@ -60,6 +61,4 @@ angular.module( 'ngBoilerplate.people', [
     })['finally'](function() {
         console.log('done');
     });
-})
-
-;
+});

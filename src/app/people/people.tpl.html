@@ -1,7 +1,12 @@
 <div class="row">
   <h1 class="page-header">The Elevator Pitch<small>For the lazy and impatient.</small></h1>
 
-
+  <article class="person col-xs-2" ng-repeat="person in people.list">
+      <img ng-src="{{person.thumbnail}}" />
+      <h4>{{ person.firstName }} {{ person.lastName }}</h4>
+      <span class="label label-info">{{ person.party }}</span>
+      <p> {{ person.status }} </p>
+  </article>
 
 </div>
 
