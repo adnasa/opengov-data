@@ -17,14 +17,19 @@
             return this;
         };
 
-        var _get = function(params) {
-            console.log(_endpoint);
+        var _get = function(params, $http) {
+            params.utformat = 'json';
+            return $http({
+                url: _endpoint,
+                params: params
+            });
         };
 
         var _mockGet = function($http) {
             var params = {
-                'parti': 'S',
-                'utformat': 'json'
+                'termlista': 'parti',
+                'utformat': 'json',
+                'kn': 'kvinna'
             };
 
             return $http({

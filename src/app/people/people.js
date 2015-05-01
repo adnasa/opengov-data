@@ -23,25 +23,38 @@ angular.module( 'ngBoilerplate.people', [
 .controller( 'PeopleCtrl', function PeopleCtrl( $scope, $q, peopleHttp ) {
     var vm = this;
     vm.list = [];
-    vm.load = function() {
+    vm.filter = {};
+    vm.load = function(params) {
         var deferred = $q.defer();
+        var mapPerson = function(person) {
+            return {
+                firstName: person.tilltalsnamn,
+                lastName: person.efternamn,
+                sex: person.kon,
+                status: person.status,
+                thumbnail: person.bild_url_80,
+                party: person.parti
+            };
+        };
 
-        peopleHttp.mockGet().success(function(data, responseStatusCode, callback, responseHeaders) {
+        if (params === undefined) {
+            params = {
+                'termlista': 'parti',
+                'kn': 'kvinna'
+            };
+        }
+
+        peopleHttp.get(params).success(function(data, responseStatusCode, callback, responseHeaders) {
             var people = [];
             if (data) {
                 var dataPeople = data.personlista;
-                _.each(dataPeople.person, function(person, index, context) {
-                    var personObj = {
-                        firstName: person.tilltalsnamn,
-                        lastName: person.efternamn,
-                        sex: person.kon,
-                        status: person.status,
-                        thumbnail: person.bild_url_80,
-                        party: person.parti
-                    };
-
-                    people.push(personObj);
-                });
+                if (angular.isArray(dataPeople.person)) {
+                    _.each(dataPeople.person, function(person, index, context) {
+                        people.push(mapPerson(person));
+                    });
+                } else {
+                    people.push(mapPerson(dataPeople.person));
+                }
             }
             deferred.resolve(people);
         }).error(function() {
@@ -49,6 +62,14 @@ angular.module( 'ngBoilerplate.people', [
         });
         return deferred.promise;
     };
+
+    vm.reload = function(params) {
+        vm.list = [];
+        vm.load(params).then(function(people) {
+            vm.list = people;
+        });
+    };
+
 
     var activate = function() {
         return vm.load();
@@ -61,4 +82,6 @@ angular.module( 'ngBoilerplate.people', [
     })['finally'](function() {
         console.log('done');
     });
+
+
 });
