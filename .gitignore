@@ -6,4 +6,4 @@ node_modules/
 vendor/
 .vagrant
 .idea
-./public/
+/public/
