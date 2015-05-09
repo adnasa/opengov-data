@@ -2,13 +2,27 @@
   <h1 class="page-header">The Elevator Pitch<small>For the lazy and impatient.</small></h1>
 
   <form name="httpForm" ng-submit="people.reload(people.filter)">
+      <label>Förnamn</label>
       <input type="text" name="firstName" ng-model="people.filter.fnamn"/>
-      <button type="submit">Hitta</button>
+
+      <label>Efternamn</label>
+      <input type="text" name="lastName" ng-model="people.filter.enamn" />
+
+      <label>Födelseår</label>
+      <input type="text" name="yearOfBirth" ng-model="people.filter.f_ar" />
+
+      <label>Parti</label>
+      <select ng-model="people.filter.parti" ng-options="key as value for (key, value) in people.partyList">
+        <option value="-">Utan partibeteckning</option>
+      </select>
+
+      <button class="btn btn-primary" type="submit">Hitta</button>
   </form>
 
   <article class="person col-xs-2" ng-repeat="person in people.list">
       <img ng-src="{{person.thumbnail}}" />
-      <h4>{{ person.firstName }} {{ person.lastName }} <small class="label label-info">{{ person.party }}</small>
+      <h4>{{ person.firstName }} {{ person.lastName }}
+          <small class="label-party-{{person.party}} label">{{ person.party }}</small>
       </h4>
       <p> {{ person.status }} </p>
   </article>

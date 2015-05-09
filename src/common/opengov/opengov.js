@@ -1,9 +1,21 @@
 /**
  * @module opengov
- * @provider
- *    - peopleHttp
  */
 ;(function(app, undefined) {
+    /** Constant */
+    app.constant("partyList", {
+        "S"   : "Socialdemokraterna",
+        "M"   : "Moderata samlingspartiet",
+        "MP"  : "Miljöpartiet",
+        "FP"  : "Folkpartiet",
+        "C"   : "Centerpartiet",
+        "SD"  : "Sverigedemokraterna",
+        "V"   : "Vänsterpartiet",
+        "KD"  : "Kristdemokraterna",
+        "nyd" : "Ny demokrati"
+    });
+
+    /** people http provider */
     app.provider("peopleHttp", function PeopleHttpProvider() {
         var _endpoint = null;
 
@@ -19,6 +31,7 @@
 
         var _get = function(params, $http) {
             params.utformat = 'json';
+            params.parti = 'S';
             return $http({
                 url: _endpoint,
                 params: params
