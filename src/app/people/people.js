@@ -26,8 +26,6 @@ angular.module( 'ngBoilerplate.people', [
     vm.filter = {};
     vm.partyList = partyList;
 
-    console.log(vm, partyList);
-
     vm.load = function(params) {
         var deferred = $q.defer();
         var mapPerson = function(person) {
