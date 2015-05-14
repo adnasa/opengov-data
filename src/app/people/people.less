@@ -1,46 +1,81 @@
+
+.label-two-chars {
+    padding: 4px 3px;
+    font-size: 0.7em;
+}
+
+.label-one-char {
+    padding: 3px 5px;
+}
+
 article.person {
     height: 200px;
     margin: 7px 0;
     min-height: 200px;
-    padding: 7px 0;
+    padding: 7px;
+
+    .person-inner-section {
+        border: 1px solid #eee;
+        margin: 2% auto;
+        padding: 10px auto;
+        text-align: center;
+        width: 95%;
+
+        h4 {
+            font-size: 1em;
+        }
+
+        .label {
+            background-color: rgba(175, 175, 175, 0.9);
+            position: relative;
+            top: -7px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .label-party-S {
+            background-color: rgba(238, 32, 32, 0.9);
+            .label-one-char();
+        }
+
+        .label-party-V {
+            background-color: rgba(175, 0, 0, 0.9);
+            .label-one-char();
+        }
+
+        .label-party-MP {
+            background-color: rgba(131, 207, 57, 0.9);
+            .label-two-chars();
+        }
+
+        .label-party-M {
+            background-color: rgba(27, 73, 221, 0.9);
+            .label-one-char();
+        }
+
+        .label-party-SD {
+            color: #000;
+            background-color: rgba(221, 221, 0, 0.9);
+            .label-two-chars();
+        }
+
+        .label-party-KD {
+            background-color: rgba(35, 25, 119, 0.9);
+            .label-two-chars();
+        }
+
+        .label-party-C {
+            background-color: rgba(0, 153, 51, 0.9);
+            .label-one-char();
+        }
+
+        .label-party-FP {
+            background-color: rgba(107, 183, 236, 0.9);
+            .label-two-chars();
+        }
+    }
+
     * {
         font-size: .8em;
-    }
-
-    .label {
-        background-color: rgba(175, 175, 175, 0.9);
-        text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
-    }
-
-    .label-party-S {
-        background-color: rgba(238, 32, 32, 0.9);
-    }
-
-    .label-party-V {
-        background-color: rgba(175, 0, 0, 0.9);
-    }
-
-    .label-party-MP {
-        background-color: rgba(131, 207, 57, 0.9);
-    }
-
-    .label-party-M {
-        background-color: rgba(27, 73, 221, 0.9);
-    }
-
-    .label-party-SD {
-        background-color: rgba(221, 221, 0, 0.9);
-    }
-
-    .label-party-KD {
-        background-color: rgba(35, 25, 119, 0.9);
-    }
-
-    .label-party-C {
-        background-color: rgba(0, 153, 51, 0.9);
-    }
-
-    .label-party-FP {
-        background-color: rgba(107, 183, 236, 0.9);
     }
 }

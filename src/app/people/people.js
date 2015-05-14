@@ -16,7 +16,7 @@ angular.module( 'ngBoilerplate.people', [
                 templateUrl: 'people/people.tpl.html'
             }
         },
-        data:{ pageTitle: 'People' }
+        data:{ pageTitle: 'Personlista' }
     });
 })
 
@@ -25,8 +25,6 @@ angular.module( 'ngBoilerplate.people', [
     vm.list = [];
     vm.filter = {};
     vm.partyList = partyList;
-
-    console.log(vm, partyList);
 
     vm.load = function(params) {
         var deferred = $q.defer();
@@ -56,7 +54,7 @@ angular.module( 'ngBoilerplate.people', [
                     _.each(dataPeople.person, function(person, index, context) {
                         people.push(mapPerson(person));
                     });
-                } else {
+                } else if (data.hasOwnProperty('person')) {
                     people.push(mapPerson(dataPeople.person));
                 }
             }

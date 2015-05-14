@@ -12,7 +12,8 @@
         "SD"  : "Sverigedemokraterna",
         "V"   : "Vänsterpartiet",
         "KD"  : "Kristdemokraterna",
-        "nyd" : "Ny demokrati"
+        "nyd" : "Ny demokrati",
+        "-"   : "Utan partibeteckning"
     });
 
     /** people http provider */
@@ -31,7 +32,6 @@
 
         var _get = function(params, $http) {
             params.utformat = 'json';
-            params.parti = 'S';
             return $http({
                 url: _endpoint,
                 params: params

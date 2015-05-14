@@ -1,30 +1,47 @@
 <div class="row">
-  <h1 class="page-header">The Elevator Pitch<small>For the lazy and impatient.</small></h1>
+  <h1 class="page-header">Personlista</h1>
+  <form class="form-horizontal" name="httpForm" ng-submit="people.reload(people.filter)">
+      <div class="form-group">
+          <label class="col-sm-2 control-label">Förnamn</label>
+          <div class="col-sm-10">
+              <input class="form-control" type="text" name="firstName" ng-model="people.filter.fnamn"/>
+          </div>
+      </div>
 
-  <form name="httpForm" ng-submit="people.reload(people.filter)">
-      <label>Förnamn</label>
-      <input type="text" name="firstName" ng-model="people.filter.fnamn"/>
+      <div class="form-group">
+          <label class="col-sm-2 control-label">Efternamn</label>
+          <div class="col-sm-10">
+              <input class="form-control" type="text" name="lastName" ng-model="people.filter.enamn" />
+          </div>
+      </div>
 
-      <label>Efternamn</label>
-      <input type="text" name="lastName" ng-model="people.filter.enamn" />
+      <div class="form-group">
+          <label class="col-sm-2 control-label">Födelseår</label>
+          <div class="col-sm-10">
+              <input class="form-control" type="number" step="1" min="1900" name="yearOfBirth" ng-model="people.filter.f_ar" />
+          </div>
+      </div>
 
-      <label>Födelseår</label>
-      <input type="text" name="yearOfBirth" ng-model="people.filter.f_ar" />
+      <div class="form-group">
+          <label class="col-sm-2 control-label">Parti</label>
+          <div class="col-sm-10">
+              <select class="form-control" ng-model="people.filter.parti" ng-options="key as value for (key, value) in people.partyList"></select>
+          </div>
+      </div>
 
-      <label>Parti</label>
-      <select ng-model="people.filter.parti" ng-options="key as value for (key, value) in people.partyList">
-        <option value="-">Utan partibeteckning</option>
-      </select>
-
-      <button class="btn btn-primary" type="submit">Hitta</button>
+      <div class="actions text-right">
+          <button class="btn btn-primary" type="submit">Hitta</button>
+      </div>
   </form>
 
-  <article class="person col-xs-2" ng-repeat="person in people.list">
-      <img ng-src="{{person.thumbnail}}" />
-      <h4>{{ person.firstName }} {{ person.lastName }}
-          <small class="label-party-{{person.party}} label">{{ person.party }}</small>
-      </h4>
-      <p> {{ person.status }} </p>
+  <article class="person col-xs-6 col-sm-4 col-md-2" ng-repeat="person in people.list">
+      <div class="person-inner-section" role="content">
+          <img ng-src="{{person.thumbnail}}" />
+          <h4>{{ person.firstName }} {{ person.lastName }}
+              <span class="label-party-{{person.party}} label">{{ person.party }}</span>
+          </h4>
+          <p> {{ person.status }} </p>
+      </div>
   </article>
 </div>
 
